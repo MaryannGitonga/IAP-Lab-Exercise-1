@@ -38,10 +38,30 @@
                 return $e->getMessage();
             }
         }
-        
-        public function deleteUser()
+
+        public function editPassword($pdo, $userPass, $userId)
         {
-            
+            try {
+                $stmt = $pdo->prepare("UPDATE users SET user_password = $userPass WHERE user_id = ?");
+                $stmt->execute([$userPass, $userId]);
+                $result = $stmt->fetch();
+                $stmt = null;
+                return "User Password has been changed";
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
+        }
+        
+        public function deleteUser($pdo, $userId)
+        {
+            try {
+                $stmt = $pdo->prepare("DELETE from users WHERE user_id = ?");
+                $stmt->execute([$userId]);
+                $stmt = null;
+                return "User has been deleted";
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
         }
     }
 
