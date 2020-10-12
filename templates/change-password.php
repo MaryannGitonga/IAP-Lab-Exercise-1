@@ -8,7 +8,7 @@
 <body>
     <div class="container" id="container">
         <div class="form-container">
-            <form action="index.html" method="post">
+            <form action="../web_actions.php" method="post">
                 <h1>Change Password</h1>
 
                 <input type="password" name="current-pass" id="current-pass" placeholder="Current Password">
@@ -17,7 +17,7 @@
 
                 <input type="password" name="confirm-pass" id="confirm-pass" placeholder="Confirm New Password">
         
-                <button type="submit">Change Password</button>
+                <button type="submit"><input type="submit" name="change-pass" value="Change Password"></button>
             </form>
         </div>
         <div class="overlay-container">
@@ -25,7 +25,7 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Change Password</h1>
                     <p>Don't want to update password?</p>
-                    <button class="sm-btn"><a href="index.html">Go Back</a></button>
+                    <button class="sm-btn"><a href="index.php">Go Back</a></button>
                 </div>
             </div>
         </div>

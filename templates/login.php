@@ -7,14 +7,14 @@
 <body>
     <div class="container" id="container">
         <div class="form-container">
-            <form method="post">
+            <form action="../web_actions.php" method="post">
                 <h1>Login</h1>
 
                 <input type="email" name="email" id="email" placeholder="Email">
         
                 <input type="password" name="password" id="password" placeholder="Password">
         
-                <button type="submit"><a href="index.html">Login</a></button>
+                <button type="submit"><input type="submit" name="login" value="Login"></button>
             </form>
         </div>
         <div class="overlay-container">
@@ -22,7 +22,7 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Welcome Back!</h1>
                     <p>Not a member?</p>
-                    <button class="sm-btn"><a href="register.html">Sign Up</a></button>
+                    <button class="sm-btn"><a href="register.php">Sign Up</a></button>
                 </div>
             </div>
         </div>

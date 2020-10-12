@@ -8,7 +8,7 @@
 <body>
     <div class="container" id="container">
         <div class="form-container">
-            <form action="../register_action.php" method="post">
+            <form action="../web_actions.php" method="post" enctype="multipart/form-data">
                 <h1>Register</h1>
                     
                 <input type="text" name="full-name" id="full-name" placeholder="Full Name">
@@ -17,11 +17,13 @@
 
                 <input type="text" name="residence" id="residence" placeholder="City of Residence">
                 
-                <input type="file" name="profile-photo" id="profile-photo" placeholder="Profile Picture">
+                <input type="file" name="profile-photo" id="profile-photo" placeholder="Profile Picture" value="">
                 
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password" placeholder="Password" minlength="8">
 
-                <button type="submit"><a href="login.html">Register</a></button>
+                <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" minlength="8">
+
+                <button type="submit"><input type="submit" name="register" value="Register"></button>
             </form>
         </div>
         <div class="overlay-container">
@@ -29,7 +31,7 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Join the Community</h1>
                     <p>Already a member?</p>
-                    <button class="sm-btn"><a href="login.html">Login</a></button>
+                    <button class="sm-btn"><a href="login.php">Login</a></button>
                 </div>
             </div>
         </div>
