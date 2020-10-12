@@ -1,8 +1,7 @@
 <?php
 
     include_once 'account.php';
-    session_start();
-
+    if(!isset($_SESSION)) { session_start(); }
     class User implements Account{
         private $userName, $userEmail, $userCity, $userPass, $userPhoto, $inputPass, $newPass;
 
@@ -113,8 +112,8 @@
         public function changePassword($pdo)
         {
             try {
-                $stmt = $pdo->prepare("UPDATE users SET user_password = $userPass WHERE user_id = ?");
-                $stmt->execute([$this->userPass, $_SESSION['user_id']]);
+                $stmt = $pdo->prepare("UPDATE users SET user_password = ? WHERE user_id = ? AND user_password = ?");
+                $stmt->execute([$this->newPass, $_SESSION['user_id'], $this->userPass]);
                 $result = $stmt->fetch();
                 $stmt = null;
                 return "User Password has been changed";
@@ -126,9 +125,7 @@
             session_destroy();
         }
 
-        public function __destruct(){
-
-        }
+        public function __destruct(){}
     }
 
 ?>

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +12,18 @@
 <body>
     <div class="container" id="container">
         <div class="profile-container">
-            <img src="images/prof-pic.png" alt="profile-pic">
+            <img src="<?php echo "images/".$_SESSION['photo'] ?>" alt="profile-pic">
         </div>
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <div class="profile-panel">
                         <h1>My profile</h1>
-                    <p>Full Name: John Doe</p>
-                    <p>Email: john.doe@mail.com</p>
-                    <p>City of Residence: Nairobi, Kenya</p>
-                    <button class="sm-btn"><a href="change-password.html">Change Password</a></button>
-                    <button class="sm-btn"><a href="login.html">Logout</a></button>
+                    <p>Full Name: <?php echo $_SESSION['user_name'] ?></p>
+                    <p>Email: <?php echo $_SESSION['user_email'] ?></p>
+                    <p>City of Residence: <?php echo $_SESSION['city'] ?></p>
+                    <button class="sm-btn"><a href="change-password.php">Change Password</a></button>
+                    <button class="sm-btn"><a href="../logout.php">Logout</a></button>
                     </div>
                 </div>
             </div>
