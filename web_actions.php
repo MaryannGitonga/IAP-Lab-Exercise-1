@@ -2,7 +2,7 @@
 
     include_once 'db_connect.php';
     include_once 'user.php';
-    session_start();
+    if(!isset($_SESSION)) { session_start(); }
 
     //PDO handle
     $con = new DBConnector();
@@ -44,5 +44,23 @@
         $_SESSION['photo'] = $user_details['profile_photo'];
 
         header("Location: /Simple-UI/templates/index.php");
+    }
+
+    if (isset($_POST['change-pass'])) {
+        $userPass = password_hash($_POST["current-pass"], PASSWORD_DEFAULT);
+        $newPass = password_hash($_POST["new-pass"], PASSWORD_DEFAULT);
+        $confirmPass = $_POST['confirm-pass'];
+
+        if(password_verify($confirmPass, $newPass)){
+            $user = new User();
+            $user->setUserPass($userPass);
+            $user->setNewPass($newPass);
+
+            $message = $user->changePassword($pdo);
+            echo $message;
+            // header("Location: /Simple-UI/templates/index.php");
+        }else {
+            echo "Passwords don't match";
+        }
     }
 ?>
