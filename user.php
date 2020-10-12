@@ -75,9 +75,15 @@
         }
 
         public function register($pdo){
+            $file_name = $this->userPhoto['name'];
+            $file_tmp_location = $this->userPhoto['tmp_name'];
+            $file_path = "templates/images/";
+
+            move_uploaded_file($file_tmp_location, $file_path.$file_name);
+
             try {
                 $stmt = $pdo->prepare("INSERT INTO users (user_full_name, user_email, city_of_residence, profile_photo, user_password) VALUES (?, ?, ?, ?, ?)");
-                $stmt->execute([$this->userName, $this->userEmail, $this->userCity, $this->userPhoto, $this->userPass]);
+                $stmt->execute([$this->userName, $this->userEmail, $this->userCity, $file_name, $this->userPass]);
                 $stmt = null;
                 return "User has been saved";
             } catch (PDOException $e) {
@@ -108,7 +114,7 @@
         {
             try {
                 $stmt = $pdo->prepare("UPDATE users SET user_password = $userPass WHERE user_id = ?");
-                $stmt->execute([$this->userPass, $_SESSION['id']]);
+                $stmt->execute([$this->userPass, $_SESSION['user_id']]);
                 $result = $stmt->fetch();
                 $stmt = null;
                 return "User Password has been changed";
