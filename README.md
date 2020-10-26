@@ -1,5 +1,5 @@
 # IAP-Lab-Project
-An Internet Application Programming lab exercise of making a simple sign up/login and a profile display page UI using HTML5/CSS
+An Internet Application Programming lab exercise of making a simple sign up/login UI (Strathmore University, ICS Year 2)
 
 # Deployment Requirements
 * You need the Apache Server.
