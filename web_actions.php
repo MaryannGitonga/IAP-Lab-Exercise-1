@@ -8,6 +8,7 @@
     $con = new DBConnector();
     $pdo = $con->connectToDB();
 
+
     if (isset($_POST["register"])){
         $userName = $_POST["full-name"];
         $userEmail = $_POST["email"];
@@ -47,7 +48,7 @@
     }
 
     if (isset($_POST['change-pass'])) {
-        $userPass = password_hash($_POST["current-pass"], PASSWORD_DEFAULT);
+        $userPass = password_hash($_POST["current-pass"]);
         $newPass = password_hash($_POST["new-pass"], PASSWORD_DEFAULT);
         $confirmPass = $_POST['confirm-pass'];
 
@@ -55,10 +56,9 @@
             $user = new User();
             $user->setUserPass($userPass);
             $user->setNewPass($newPass);
-
             $message = $user->changePassword($pdo);
             echo $message;
-            // header("Location: /IAP-Lab-Project/templates/index.php");
+            header("Location: /IAP-Lab-Project/templates/index.php");
         }else {
             echo "Passwords don't match";
         }

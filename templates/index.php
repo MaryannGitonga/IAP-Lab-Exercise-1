@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!$_SESSION['user_name']){
+    if (!isset($_SESSION['user_name'])){
         header("Location: /IAP-Lab-Project/templates/login.php");
     }
 ?>

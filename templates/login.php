@@ -10,9 +10,9 @@
             <form action="../web_actions.php" method="post">
                 <h1>Login</h1>
 
-                <input type="email" name="email" id="email" placeholder="Email">
+                <input type="email" name="email" id="email" placeholder="Email" required>
         
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password" placeholder="Password" required>
         
                 <button type="submit"><input type="submit" name="login" value="Login"></button>
             </form>

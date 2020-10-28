@@ -92,7 +92,7 @@
         }
         public function login($pdo){
             try {
-                $stmt = $pdo->prepare("SELECT user_password FROM users WHERE user_email = ?");
+                $stmt = $pdo->prepare("SELECT * FROM users WHERE user_email = ?");
                 $stmt->execute([$this->userEmail]);
                 $result = $stmt->fetch();
                 $this->userPass = $result['user_password'];
@@ -101,7 +101,7 @@
                     $stmt->execute([$this->userEmail, $this->userPass]);
                     $result = $stmt->fetch();
                     $stmt = null;
-                return $result;
+                    return $result;
                 } else {
                     echo 'Invalid password.';
                 }
@@ -112,11 +112,17 @@
         public function changePassword($pdo)
         {
             try {
-                $stmt = $pdo->prepare("UPDATE users SET user_password = ? WHERE user_id = ? AND user_password = ?");
-                $stmt->execute([$this->newPass, $_SESSION['user_id'], $this->userPass]);
+                $stmt = $pdo->prepare("SELECT * FROM users WHERE user_email = ?");
+                $stmt->execute([$_SESSION['user_email']]);
                 $result = $stmt->fetch();
-                $stmt = null;
-                return "User Password has been changed";
+                $this->userPass = $result['user_password'];
+                if(password_verify($this->inputPass, $this->userPass)){
+                    $stmt = $pdo->prepare("UPDATE users SET user_password = ? WHERE user_id = ?");
+                    $stmt->execute([$this->newPass, $_SESSION['user_id']]);
+                    $result = $stmt->fetch();
+                    $stmt = null;
+                    return "User Password has been changed";
+                }
             } catch (PDOException $e) {
                 return $e->getMessage();
             }
