@@ -13,7 +13,7 @@
              try {
                  $this->pdo = new PDO($dsn, Util::$DB_USER, Util::$DB_USER_PASS, $options);
              } catch (PDOException $e) {
-                 echo $E->getMessage();
+                 echo $e->getMessage();
              }
          }
 
