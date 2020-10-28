@@ -6,4 +6,5 @@ An Internet Application Programming lab exercise of making a simple sign up/logi
 * You need to have the MySQL database.
 * If you are using xampp, clone this repository in the htdocs directory.
 * Start Apache and MySQL on xampp. Ensure that they are running successfully.
+* Import the `iap_exercise_1.sql` to your phpMyAdmin to add the database.
 * Open the url `localhost/project-folder-name/templates/register.php` on your preferred browser.
