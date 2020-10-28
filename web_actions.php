@@ -25,7 +25,7 @@
 
         $message = $user->register($pdo);
         echo $message;
-        header("Location: /Simple-UI/templates/login.php");
+        header("Location: /IAP-Lab-Project/templates/login.php");
     }
     
     if (isset($_POST['login'])) {
@@ -43,7 +43,7 @@
         $_SESSION['city'] = $user_details['city_of_residence'];
         $_SESSION['photo'] = $user_details['profile_photo'];
 
-        header("Location: /Simple-UI/templates/index.php");
+        header("Location: /IAP-Lab-Project/templates/index.php");
     }
 
     if (isset($_POST['change-pass'])) {
@@ -58,7 +58,7 @@
 
             $message = $user->changePassword($pdo);
             echo $message;
-            // header("Location: /Simple-UI/templates/index.php");
+            // header("Location: /IAP-Lab-Project/templates/index.php");
         }else {
             echo "Passwords don't match";
         }

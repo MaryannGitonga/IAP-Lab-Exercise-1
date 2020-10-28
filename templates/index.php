@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if (!$_SESSION['user_name']){
+        header("Location: /IAP-Lab-Project/templates/login.php");
+    }
 ?>
 
 <!DOCTYPE html>

@@ -10,6 +10,6 @@
 
     $user = new User();
     $user->logout($pdo);
-    header("Location:/Simple-UI/templates/login.php");
+    header("Location:/IAP-Lab-Project/templates/login.php");
 
 ?>
