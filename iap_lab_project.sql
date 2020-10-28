@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   `user_email` varchar(255) NOT NULL,
   `city_of_residence` varchar(255) NOT NULL,
   `profile_photo` blob NOT NULL,
-  `user_password` varchar(40) NOT NULL
+  `user_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
