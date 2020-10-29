@@ -48,13 +48,13 @@
     }
 
     if (isset($_POST['change-pass'])) {
-        $userPass = password_hash($_POST["current-pass"]);
+        $inputPass = $_POST["current-pass"];
         $newPass = password_hash($_POST["new-pass"], PASSWORD_DEFAULT);
         $confirmPass = $_POST['confirm-pass'];
 
         if(password_verify($confirmPass, $newPass)){
             $user = new User();
-            $user->setUserPass($userPass);
+            $user->setInputPass($inputPass);
             $user->setNewPass($newPass);
             $message = $user->changePassword($pdo);
             echo $message;

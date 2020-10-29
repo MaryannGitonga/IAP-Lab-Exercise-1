@@ -116,12 +116,18 @@
                 $stmt->execute([$_SESSION['user_email']]);
                 $result = $stmt->fetch();
                 $this->userPass = $result['user_password'];
+                echo $this->userPass;
+                echo "</br>".$this->inputPass;
+                echo "</br>".$this->newPass;
                 if(password_verify($this->inputPass, $this->userPass)){
                     $stmt = $pdo->prepare("UPDATE users SET user_password = ? WHERE user_id = ?");
                     $stmt->execute([$this->newPass, $_SESSION['user_id']]);
                     $result = $stmt->fetch();
                     $stmt = null;
                     return "User Password has been changed";
+                }
+                else {
+                    echo "Password not changed";
                 }
             } catch (PDOException $e) {
                 return $e->getMessage();
