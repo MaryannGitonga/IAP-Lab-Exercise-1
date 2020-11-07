@@ -63,4 +63,30 @@
             echo "Passwords don't match";
         }
     }
+
+    if (isset($_POST['add-food'])) {
+        $food_name = $_POST['food-name'];
+        $food_description = $_POST['food-description'];
+        $food_price = $_POST['food-price'];
+        $food_image = $_FILES['food-photo'];
+
+        $original_image_file = $food_image["name"];
+        $file_tmp_location = $food_image["tmp_name"];
+
+        $file_type = substr($original_image_file, strpos($original_image_file, "."), strlen($original_image_file));
+
+        $file_path = "templates/images/food_images/";
+        $new_file_name = time().$file_type;
+        
+        if(move_uploaded_file($file_tmp_location, $file_path.$original_image_file)){
+            try{
+                $stmt = $pdo->prepare("INSERT foods(food_name, food_description, food_price, food_image) VALUES(?, ?, ?, ?)");
+                $stmt->execute([$food_name, $food_description, $food_price, $original_image_file]);
+                $stmt = null;
+                echo "Food has been added to the db";
+            }catch (PDOException $e){
+                return $e->getMessage();
+            }
+        }
+    }
 ?>
