@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body>
+<body style="height: 100vh;">
     <div class="container-form" id="container">
         <div class="form-container">
             <form action="../web_actions.php" method="post">
