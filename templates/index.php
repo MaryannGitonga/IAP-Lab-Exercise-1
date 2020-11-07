@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    if (!isset($_SESSION['user_name'])){
-        header("Location: /IAP-Lab-Project/templates/login.php");
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +8,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></head>
 <body>
     <div class="container text-center">
-        <h1>Order Food Items</h1>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.php">Food Website</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <?php
+                        if (!isset($_SESSION['user_name'])) {
+                    ?>
+                            <li class="nav-item"><a class="nav-link" href="register.php">Sign Up</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                    <?php
+                        }else{
+                    ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo $_SESSION['user_name'] ?>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="profile.php">My Profile</a>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="profile.php"></a></li>
+                    <?php
+                        }
+                    ?> 
+                </ul>
+            </div>
+        </nav>
+        <h1 class="page-title">Order Food Items</h1>
         <div class="shell">
             <div class="container">
                 <div class="row">

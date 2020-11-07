@@ -91,6 +91,7 @@ input {
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
+	margin-top: 120px;
 	width: 768px;
 	max-width: 100%;
 	min-height: 480px;
@@ -152,10 +153,50 @@ input {
 	transform: translateX(0);
 }
 
+.profile-panel{
+    text-align: left;
+}
+
+.profile-panel button{
+    margin-top: 20px;
+}
+
+.profile-container img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 500px;
+	height: 500px;
+}
+
 /* Index Page */
 
 .container{
 	width: 100%;
+}
+
+nav{
+	margin-top: 20px;
+}
+
+.navbar{
+	background-color: #c35840;
+}
+
+nav ul li, nav ul{
+	text-decoration: none;
+}
+
+nav ul li a{
+	color: #fff;
+}
+
+.navbar-brand{
+	color: #fff;
+}
+
+.page-title{
+	margin-top: 40px;
 }
 
 .shell{
@@ -271,14 +312,14 @@ a.cart-btn{
 	height: 35px;
 	line-height: 35px;
 	border-radius: 50%;
-	background: #FF416C;
-	border: 1px solid #FF416C;
+	background: #c35840;
+	border: 1px solid #c35840;
 	transition: all 0.2s ease-in-out;
 }
 
 a.cart-btn:hover, a.cart-btn:active, a.cart-btn:focus{
 	background-color: #fff;
-	color: #FF416C;
+	color: #c35840;
 	text-decoration: none;
 }
 
@@ -296,18 +337,18 @@ a.cart-btn:hover, a.cart-btn:active, a.cart-btn:focus{
 	}
 
 	a.cart-btn{
-		border-color: #FF416C;
-		background: #FF416C;
+		border-color: #c35840;
+		background: #c35840;
 		color: #fff;
 	}
 }
 
 #comingsoonModalLabel{
 	text-align: center!important;
-	color: #FF416C;
+	color: #c35840;
 }
 
 .close span{
-	color: #FF416C;
+	color: #c35840;
 }
 
