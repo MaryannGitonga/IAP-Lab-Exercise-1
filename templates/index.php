@@ -11,57 +11,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container text-center" id="container">
-        <!-- <div class="profile-container">
-            <img src="<?php echo "images/".$_SESSION['photo'] ?>" alt="profile-pic">
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <div class="profile-panel">
-                        <h1>My profile</h1>
-                    <p>Full Name: <?php echo $_SESSION['user_name'] ?></p>
-                    <p>Email: <?php echo $_SESSION['user_email'] ?></p>
-                    <p>City of Residence: <?php echo $_SESSION['city'] ?></p>
-                    <button class="sm-btn"><a href="change-password.php">Change Password</a></button>
-                    <button class="sm-btn"><a href="../logout.php">Logout</a></button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
+    <div class="container text-center">
+        <h1>Order Food Items</h1>
         <div class="shell">
-            <div class="container">
+            <div class="">
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="food-product">
-                            <div class="food-img">
-                            <!--food image goes in here-->
-                                <img src="" alt="">
-                            </div>
-                            <div class="food-text">
-                                <div class="food-title">
-                                    <h3><!--food title goes in here--></h3>
-                                </div>
-                                <div class="food-description">
-                                    <p><!--food description goes here--></p>
-                                </div>
-                                <div class="food-price">
-                                    <div class="price-left">
-                                        <span class="price"><!--food price goes in here--></span>
+                    <?php
+                        include_once '../db_connect.php';
+                        $con = new DBConnector();
+                        $pdo = $con->connectToDB();
+
+                        $stmt = $pdo->prepare("SELECT * FROM foods");
+                        $stmt->execute();
+                        $results = $stmt->fetchAll();
+                        foreach($results as $food){
+                    ?>
+                            <div class="col-md-4">
+                                <div class="food-product">
+                                    <div class="food-img">
+                                        <img src="<?php echo "images/food_images/".$food['food_image'] ?>" alt="">
                                     </div>
-                                    <div class="price-right">
-                                        <a href="#" class="cart-btn">
-                                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                        </a>
+                                    <div class="food-text">
+                                        <div class="food-title">
+                                            <h3><?php echo $food['food_name'] ?></h3>
+                                        </div>
+                                        <div class="food-description">
+                                            <p><?php echo $food['food_description'] ?></p>
+                                        </div>
+                                        <div class="food-price">
+                                            <div class="price-left">
+                                                <span class="price">Ksh <?php echo $food['food_price'] ?></span>
+                                            </div>
+                                            <div class="price-right">
+                                                <a href="../web_actions.php?add-to-cart=<?php echo $food['food_id'] ?>" class="cart-btn">
+                                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </div>

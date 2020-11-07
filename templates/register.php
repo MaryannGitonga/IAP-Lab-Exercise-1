@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-    <div class="container" id="container">
+    <div class="container-form" id="container">
         <div class="form-container">
             <form action="../web_actions.php" method="post" enctype="multipart/form-data">
                 <h1>Register</h1>
