@@ -302,3 +302,12 @@ a.cart-btn:hover, a.cart-btn:active, a.cart-btn:focus{
 	}
 }
 
+#comingsoonModalLabel{
+	text-align: center!important;
+	color: #FF416C;
+}
+
+.close span{
+	color: #FF416C;
+}
+
