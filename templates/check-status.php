@@ -11,22 +11,20 @@
 <body style="height: 100vh;">
     <div class="container-form" id="container">
         <div class="form-container">
-            <form action="" method="post" id="order-form">
-                <h1>Make an Order</h1>
+            <form action="" method="post" id="status-form">
+                <h1>Check Order Status</h1>
                     
-                <input type="text" name="food-name" id="food-name" placeholder="Food Name" value="">
+                <input type="number" name="order-id" id="order-id" placeholder="Order ID" value="">
                 
-                <input type="number" name="food-quantity" id="food-quantity" placeholder="Food Quantity" value="">
-
-                <button type="submit" id="order-button">Order Food</button>
+                <button type="submit" id="status-button">Check Status</button>
             </form>
         </div>
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Order Food</h1>
-                    <p>Already ordered?</p>
-                    <button class="sm-btn"><a href="check-status.php">Check Order Status</a></button>
+                    <h1>Check Status</h1>
+                    <p>Want to order?</p>
+                    <button class="sm-btn"><a href="index.php">Make an Order</a></button>
                 </div>
             </div>
         </div>
